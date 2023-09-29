@@ -6,10 +6,10 @@ apt install meson cmake python3-pip xorg -y
 pip install flask flask-cors ctypesgen
 
 cp -r /tmp/overlay /home/soft
-(cd /home/soft/brake_machine && ./build.sh && find .. -name bm_host-*.deb -exec bash -c "dpkg -i \"{}\"" \;)
+(cd /home/soft/brake_machine && ./build.sh && find .. -name bm-host_*.deb -exec bash -c "dpkg -i \"{}\"" \;)
 
 # Install brake machine software packages
-BM_APP_PATH=$(find /home/soft -name bm-app-*.deb -maxdepth 1)
+BM_APP_PATH=$(find /home/soft -maxdepth 1 -name bm-app-*.deb)
 dpkg -i $BM_APP_PATH
 apt install --fix-broken -y
 dpkg -i $BM_APP_PATH
